@@ -23,7 +23,7 @@ body {
   top: 20px;
   right: 20px;
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #ff4500;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -32,8 +32,23 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-#temaButton:hover {
-  background-color: #0056b3;
+#temaButton-left {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background-color: #ff4500;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#temaButton:hover,
+#temaButton-left:hover {
+  background-color: #e63e00;
   transform: translateY(-2px);
 }
 
@@ -241,7 +256,9 @@ body.dark-theme button {
   border: 1px solid #777;
 }
 
-body.dark-theme .form-group label {
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme label {
   color: #e0e0e0;
 }
 
