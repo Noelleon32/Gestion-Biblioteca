@@ -8,6 +8,9 @@
     <link rel="icon" href="IMG/Logo.webp">
 </head>
 <body>
+    <!-- Botón para cambiar de tema -->
+    <button id="temaButton" onclick="cambiarTema()">Cambiar Tema</button>
+
     <div class="container">
         <h2>Gestión de Biblioteca</h2>
 
@@ -20,43 +23,49 @@
         <!-- Formulario para Registro de Préstamo -->
         <form id="loanForm" class="form" style="display: none;">
             <h3>Registro de Préstamo de Libro</h3>
-            <label for="nombre">Nombre del estudiante:</label>
-            <input type="text" id="nombre" name="nombre" required>
-<br>
-            <label for="carrera">Carrera:</label>
-            <select id="carrera" name="carrera" required>
-                <br>
-
-                <option value="">Seleccione una carrera</option>
-                <option>Ingeniería de Sistemas</option>
-                <option>Administración de Empresas</option>
-                <option>Contaduría</option>
-            </select>
-<br>
-            <label for="semestre">Semestre:</label>
-            <input type="number" id="semestre" name="semestre" min="1" max="10" required>
-<br>
-            <label for="libro">Título del libro:</label>
-            <input type="text" id="libro" name="libro" required>
-<br>
-            <label for="plazo">Plazo de devolución:</label>
-            <input type="date" id="plazo" name="plazo" required>
-<br>
+            <div class="form-group">
+                <label for="nombre" class="tooltip">Nombre del estudiante: <span class="tooltiptext">Escribe el nombre completo del estudiante</span></label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="carrera" class="tooltip">Carrera: <span class="tooltiptext">Selecciona la carrera del estudiante</span></label>
+                <select id="carrera" name="carrera" required>
+                    <option value="">Seleccione una carrera</option>
+                    <option>Ingeniería de Sistemas</option>
+                    <option>Administración de Empresas</option>
+                    <option>Contaduría</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="semestre" class="tooltip">Semestre: <span class="tooltiptext">Indica el semestre actual del estudiante</span></label>
+                <input type="number" id="semestre" name="semestre" min="1" max="10" required>
+            </div>
+            <div class="form-group">
+                <label for="libro" class="tooltip">Título del libro: <span class="tooltiptext">Escribe el título del libro a prestar</span></label>
+                <input type="text" id="libro" name="libro" required>
+            </div>
+            <div class="form-group">
+                <label for="plazo" class="tooltip">Plazo de devolución: <span class="tooltiptext">Selecciona la fecha límite para la devolución del libro</span></label>
+                <input type="date" id="plazo" name="plazo" required>
+            </div>
             <button type="button" onclick="registrarPrestamo()">Registrar Préstamo</button>
         </form>
 
         <!-- Formulario para Registro de Donación -->
         <form id="donationForm" class="form" style="display: none;">
             <h3>Registro de Donación de Libro</h3>
-            <label for="donador">Nombre del donador:</label>
-            <input type="text" id="donador" name="donador" required>
-<br>
-            <label for="tituloDonacion">Título del libro:</label>
-            <input type="text" id="tituloDonacion" name="tituloDonacion" required>
-<br>
-            <label for="fechaDonacion">Fecha de donación:</label>
-            <input type="date" id="fechaDonacion" name="fechaDonacion" required>
-<br>
+            <div class="form-group">
+                <label for="donador" class="tooltip">Nombre del donador: <span class="tooltiptext">Escribe el nombre completo del donador</span></label>
+                <input type="text" id="donador" name="donador" required>
+            </div>
+            <div class="form-group">
+                <label for="tituloDonacion" class="tooltip">Título del libro: <span class="tooltiptext">Escribe el título del libro donado</span></label>
+                <input type="text" id="tituloDonacion" name="tituloDonacion" required>
+            </div>
+            <div class="form-group">
+                <label for="fechaDonacion" class="tooltip">Fecha de donación: <span class="tooltiptext">Selecciona la fecha de la donación</span></label>
+                <input type="date" id="fechaDonacion" name="fechaDonacion" required>
+            </div>
             <button type="button" onclick="registrarDonacion()">Registrar Donación</button>
         </form>
 
@@ -65,11 +74,10 @@
 
         <!-- Sección para Libros Disponibles -->
         <h3>Libros Disponibles</h3>
-        <ul id="librosDisponibles" class="book-list">
-        </ul>
+        <ul id="librosDisponibles" class="book-list"></ul>
+    </div>
 
-    
     <script src="JS/index.js"></script>
-</div>
 </body>
 </html>
+

@@ -21,47 +21,57 @@ function toggleForm(formId) {
     }
 }
 
+// Función para validar los campos del formulario
+function validarFormulario(inputs) {
+    for (let input of inputs) {
+        if (!input.value.trim()) {
+            mostrarMensaje(`Por favor, completa el campo: ${input.name}`, "red");
+            return false;
+        }
+    }
+    return true;
+}
+
 // Función para registrar el préstamo de un libro
 function registrarPrestamo() {
-    const nombre = document.getElementById("nombre").value;
-    const carrera = document.getElementById("carrera").value;
-    const semestre = document.getElementById("semestre").value;
-    const libro = document.getElementById("libro").value;
-    const plazo = document.getElementById("plazo").value;
-    const messageDiv = document.getElementById("message");
+    const inputs = [
+        document.getElementById("nombre"),
+        document.getElementById("carrera"),
+        document.getElementById("semestre"),
+        document.getElementById("libro"),
+        document.getElementById("plazo")
+    ];
 
-    if (nombre && carrera && semestre && libro && plazo) {
+    if (validarFormulario(inputs)) {
+        const nombre = inputs[0].value;
+        const libro = inputs[3].value;
         const libroIndex = librosDisponibles.indexOf(libro);
+
         if (libroIndex > -1) {
             librosDisponibles.splice(libroIndex, 1);
             updateLibrosDisponibles();
-            messageDiv.innerText = `Préstamo registrado para el estudiante ${nombre}.`;
-            messageDiv.style.color = "green";
+            mostrarMensaje(`Préstamo registrado para el estudiante ${nombre}.`, "green");
         } else {
-            messageDiv.innerText = "El libro solicitado no está disponible.";
-            messageDiv.style.color = "red";
+            mostrarMensaje("El libro solicitado no está disponible.", "red");
         }
-    } else {
-        messageDiv.innerText = "Por favor, completa todos los campos.";
-        messageDiv.style.color = "red";
     }
 }
 
 // Función para registrar la donación de un libro
 function registrarDonacion() {
-    const donador = document.getElementById("donador").value;
-    const tituloDonacion = document.getElementById("tituloDonacion").value;
-    const fechaDonacion = document.getElementById("fechaDonacion").value;
-    const messageDiv = document.getElementById("message");
+    const inputs = [
+        document.getElementById("donador"),
+        document.getElementById("tituloDonacion"),
+        document.getElementById("fechaDonacion")
+    ];
 
-    if (donador && tituloDonacion && fechaDonacion) {
+    if (validarFormulario(inputs)) {
+        const tituloDonacion = inputs[1].value;
+        const donador = inputs[0].value;
+
         librosDisponibles.push(tituloDonacion);
         updateLibrosDisponibles();
-        messageDiv.innerText = `Donación registrada del libro "${tituloDonacion}" por ${donador}.`;
-        messageDiv.style.color = "green";
-    } else {
-        messageDiv.innerText = "Por favor, completa todos los campos.";
-        messageDiv.style.color = "red";
+        mostrarMensaje(`Donación registrada del libro "${tituloDonacion}" por ${donador}.`, "green");
     }
 }
 
@@ -69,6 +79,23 @@ function registrarDonacion() {
 function updateLibrosDisponibles() {
     const librosList = document.getElementById("librosDisponibles");
     librosList.innerHTML = librosDisponibles
-        .map(libro => `<li>${libro}</li>`)
+        .map(libro => `<li>${libro}<span class="tooltip">❓<span class="tooltiptext">Disponible para préstamo</span></span></li>`)
         .join("");
+}
+
+// Mostrar mensaje de confirmación o error
+function mostrarMensaje(mensaje, color) {
+    const messageDiv = document.getElementById("message");
+    messageDiv.innerText = mensaje;
+    messageDiv.style.color = color;
+    messageDiv.style.opacity = 1;
+    setTimeout(() => {
+        messageDiv.style.opacity = 0;
+    }, 3000);
+}
+
+// Función para cambiar el tema de la página
+function cambiarTema() {
+    const body = document.body;
+    body.classList.toggle("dark-theme");
 }
