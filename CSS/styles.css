@@ -276,3 +276,77 @@ body.dark-theme .tooltip .tooltiptext {
   background-color: #444;
   color: #e0e0e0;
 }
+/* General Styles */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.container {
+  flex: 1;
+  max-width: 800px;
+  width: 100%;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 60px; /* Añadido para evitar superposición */
+  transition: transform 0.3s ease;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    bottom: 0;
+    left: 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.contact-info, .social-media {
+    margin: 10px 0;
+}
+
+.contact-info p, .contact-info a, .social-media a {
+    display: block;
+    margin: 5px 0;
+    color: #fff;
+    text-decoration: none;
+}
+
+.contact-info a i, .social-media a i {
+    margin-right: 10px;
+}
+
+.social-media a {
+    margin: 0 10px;
+    font-size: 1.5em;
+}
+
+.social-media a:hover {
+    text-decoration: underline;
+}
+
+/* Tema Oscuro - Footer */
+body.dark-theme footer {
+    background-color: #222;
+    color: #ccc;
+}
+
