@@ -6,18 +6,31 @@
     <title>Gestión de Biblioteca</title>
     <link rel="stylesheet" href="CSS/styles.css">
     <link rel="icon" href="IMG/Logo.webp">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <!-- Botón para cambiar de tema -->
-    <button id="temaButton" onclick="cambiarTema()">Cambiar Tema</button>
+    <button id="temaButton" onclick="cambiarTema()">
+        <i class="fas fa-adjust"></i> Cambiar Tema
+    </button>
 
     <div class="container">
         <h2>Gestión de Biblioteca</h2>
 
         <!-- Opciones de Registro -->
         <div id="form-selection" class="form-selection">
-            <button id="loanButton" onclick="toggleForm('loanForm')">Registrar Préstamo</button>
-            <button id="donationButton" onclick="toggleForm('donationForm')">Registrar Donación</button>
+            <button class="form-toggle-button" id="loanButton" onclick="toggleForm('loanForm')">
+                <i class="fas fa-book-reader"></i> Registrar Préstamo
+            </button>
+            <button class="form-toggle-button" id="donationButton" onclick="toggleForm('donationForm')">
+                <i class="fas fa-hand-holding-heart"></i> Registrar Donación
+            </button>
+        </div>
+
+        <!-- Campo de Búsqueda -->
+        <div class="form-group">
+            <label for="buscarLibro" class="tooltip">Buscar Libro: <span class="tooltiptext">Escribe el título del libro para buscar</span></label>
+            <input type="text" id="buscarLibro" name="buscarLibro" placeholder="Buscar libro" oninput="buscarLibro()">
         </div>
 
         <!-- Formulario para Registro de Préstamo -->
@@ -48,7 +61,9 @@
                 <label for="plazo" class="tooltip">Plazo de devolución: <span class="tooltiptext">Selecciona la fecha límite para la devolución del libro</span></label>
                 <input type="date" id="plazo" name="plazo" required>
             </div>
-            <button type="button" onclick="registrarPrestamo()">Registrar Préstamo</button>
+            <button type="button" class="submit-button" onclick="registrarPrestamo()">
+                <i class="fas fa-check"></i> Registrar Préstamo
+            </button>
         </form>
 
         <!-- Formulario para Registro de Donación -->
@@ -66,11 +81,13 @@
                 <label for="fechaDonacion" class="tooltip">Fecha de donación: <span class="tooltiptext">Selecciona la fecha de la donación</span></label>
                 <input type="date" id="fechaDonacion" name="fechaDonacion" required>
             </div>
-            <button type="button" onclick="registrarDonacion()">Registrar Donación</button>
+            <button type="button" class="submit-button" onclick="registrarDonacion()">
+                <i class="fas fa-check"></i> Registrar Donación
+            </button>
         </form>
 
         <!-- Mensaje de confirmación -->
-        <div id="message" class="message"></div>
+        <div id="message" class="message" aria-live="polite"></div>
 
         <!-- Sección para Libros Disponibles -->
         <h3>Libros Disponibles</h3>

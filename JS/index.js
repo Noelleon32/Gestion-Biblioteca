@@ -1,5 +1,5 @@
-// Array para almacenar los libros disponibles
-let librosDisponibles = [];
+// Array para almacenar los libros disponibles (inicialmente con 5 libros)
+const librosDisponibles = ["Cien Años de Soledad", "Don Quijote de la Mancha", "El Principito", "La Odisea", "Matar a un Ruiseñor"];
 
 // Alternar entre los formularios de préstamo y donación
 function toggleForm(formId) {
@@ -13,7 +13,7 @@ function toggleForm(formId) {
         donationForm.style.display = "none";
         loanButton.style.display = "none";
         donationButton.style.display = "inline-block";
-    } else if (formId === "donationForm") {
+    } else {
         donationForm.style.display = "block";
         loanForm.style.display = "none";
         donationButton.style.display = "none";
@@ -23,7 +23,7 @@ function toggleForm(formId) {
 
 // Función para validar los campos del formulario
 function validarFormulario(inputs) {
-    for (let input of inputs) {
+    for (const input of inputs) {
         if (!input.value.trim()) {
             mostrarMensaje(`Por favor, completa el campo: ${input.name}`, "red");
             return false;
@@ -76,11 +76,27 @@ function registrarDonacion() {
 }
 
 // Actualizar la lista de libros disponibles
-function updateLibrosDisponibles() {
+function updateLibrosDisponibles(filtro = '') {
     const librosList = document.getElementById("librosDisponibles");
-    librosList.innerHTML = librosDisponibles
-        .map(libro => `<li>${libro}<span class="tooltip">❓<span class="tooltiptext">Disponible para préstamo</span></span></li>`)
+    const librosFiltrados = librosDisponibles.filter(libro => 
+        libro.toLowerCase().includes(filtro.toLowerCase())
+    );
+
+    librosList.innerHTML = librosFiltrados
+        .map(libro => `
+            <li><i class="fas fa-book"></i> ${libro}
+                <span class="tooltip">❓
+                    <span class="tooltiptext">Disponible para préstamo</span>
+                </span>
+            </li>
+        `)
         .join("");
+}
+
+// Función para buscar libro
+function buscarLibro() {
+    const buscarInput = document.getElementById("buscarLibro").value;
+    updateLibrosDisponibles(buscarInput);
 }
 
 // Mostrar mensaje de confirmación o error
@@ -96,6 +112,8 @@ function mostrarMensaje(mensaje, color) {
 
 // Función para cambiar el tema de la página
 function cambiarTema() {
-    const body = document.body;
-    body.classList.toggle("dark-theme");
+    document.body.classList.toggle("dark-theme");
 }
+
+// Inicializar la lista de libros disponibles
+updateLibrosDisponibles();

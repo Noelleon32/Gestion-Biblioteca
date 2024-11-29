@@ -7,6 +7,12 @@
 }
 
 body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #a8edea, #fed6e3);
+  animation: gradientShift 8s infinite alternate;
+  color: #333;
+  margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,22 +38,7 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-#temaButton-left {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  padding: 10px 20px;
-  background-color: #ff4500;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-#temaButton:hover,
-#temaButton-left:hover {
+#temaButton:hover {
   background-color: #e63e00;
   transform: translateY(-2px);
 }
@@ -85,7 +76,7 @@ h3 {
   margin-bottom: 20px;
 }
 
-.form-selection button {
+.form-toggle-button {
   padding: 10px 20px;
   font-size: 16px;
   margin: 0 10px;
@@ -98,7 +89,7 @@ h3 {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.form-selection button:hover {
+.form-toggle-button:hover {
   background-color: #0056b3;
   transform: translateY(-2px);
 }
@@ -150,7 +141,7 @@ select:focus {
   box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
 }
 
-button[type="button"] {
+.submit-button {
   padding: 10px 20px;
   font-size: 16px;
   color: #fff;
@@ -163,7 +154,7 @@ button[type="button"] {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-button[type="button"]:hover {
+.submit-button:hover {
   background-color: #218838;
   transform: translateY(-2px);
 }
